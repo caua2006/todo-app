@@ -94,6 +94,18 @@ app.post('/completar',(req,res)=>{
     })
 
 })
+app.post('/excluir',(req,res)=>{
+    const id = req.body.id;
+
+    const sql = `
+        DELETE FROM tarefas 
+        WHERE tarefas.id = ${id}
+    `
+    conexao.query(sql,(error,data)=>{
+        if(error) return console.log(error)
+        res.redirect('/')
+    })
+})
 
 app.post('/descompletar',(req,res)=>{
     const id = req.body.id;
