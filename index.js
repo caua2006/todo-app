@@ -27,9 +27,9 @@ app.get("/",(req,res)=>{
                 completa: data.completa == 0 ? false : true
             }
         })
-        console.log(tarefas)
+        res.render('home',{tarefas})
     })
-    res.render('home')
+    
 })
 app.post("/criar",(req,res)=>{
     const descricao = req.body.descricao;
