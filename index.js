@@ -107,7 +107,7 @@ app.post('/excluir',(req,res)=>{
     })
 })
 
-app.post('/limpartarefas',(req,res)=>{
+app.get('/limpartarefas',(req,res)=>{
     const sql = `
         DELETE FROM tarefas    
     `
