@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mysql = require('mysql2')
@@ -30,6 +31,17 @@ app.get("/",(req,res)=>{
         res.render('home',{tarefas})
     })
     
+})
+app.post('/completar',(req,res)=>{
+    const id = req.body.id;
+    const sql = `
+        UPDATE tarefas set completa = '1' WHERE tarefas.id = ${id}
+    `
+    conexao.query(sql,(error,data)=>{
+        if(error) return console.log(error)
+        res.redirect('/')
+    })
+
 })
 app.post("/criar",(req,res)=>{
     const descricao = req.body.descricao;
